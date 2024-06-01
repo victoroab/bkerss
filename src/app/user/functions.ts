@@ -8,9 +8,13 @@ export const getUsers = async () => {
   return await db.query.users.findMany()
 }
 
-export const createUser = async (formData: FormData) => {
-  const name = formData.get('name') as string
-  const email = formData.get('email') as string
+export const createUser = async ({
+  name,
+  email,
+}: {
+  name: string
+  email: string
+}) => {
   await db.insert(users).values({
     name,
     email,
