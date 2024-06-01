@@ -1,10 +1,30 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import { migrate } from 'drizzle-orm/postgres-js/migrator';
-import postgres from 'postgres';
+import * as schema from './schema'
+import { PostgresJsDatabase, drizzle } from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
 
-// for migrations
-const migrationClient = postgres("postgres://postgres:victor@localhost:5432/bkerss-db", { max: 1 });
+const DATABASE_URL = process.env.DATABASE_URL as string
 
-// for query purposes
-const queryClient = postgres("postgres://postgres:victor@localhost:5432/bkerss-db");
-export const db = drizzle(queryClient);
+// declare global {
+//   // eslint-disable-next-line no-var -- only var works here
+//   var db: PostgresJsDatabase<typeof schema> | undefined
+//   var qc: postgres.Sql<{}>
+// }
+
+// let db: PostgresJsDatabase<typeof schema>
+// let qc: postgres.Sql<{}>
+
+// if (process.env.NODE_ENV === 'production') {
+//   qc = postgres(DATABASE_URL)
+//   db = drizzle(qc, { schema })
+// } else {
+//   if (!global.db) {
+//     qc = postgres(DATABASE_URL)
+//     global.db = drizzle(qc, { schema })
+//   }
+//   db = global.db
+// }
+
+// export { db }
+
+const qc = postgres(DATABASE_URL)
+export const db = drizzle(qc, { schema })
