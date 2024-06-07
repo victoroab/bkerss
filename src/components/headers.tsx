@@ -32,13 +32,13 @@ export function Header() {
     >
       <nav className="container flex items-center justify-between py-3">
         <span
-          className={cn(pacifico.className, 'text-2xl font-bold text-sky-900')}
+          className={cn(pacifico.className, 'text-3xl font-bold text-sky-900')}
         >
           Bkerss
         </span>
         <div className="flex items-center gap-4">
           <span className="cursor-pointer font-medium">Login</span>
-          <Button className="rounded-3xl bg-sky-700 hover:bg-sky-600">
+          <Button className="rounded-3xl bg-sky-500 hover:bg-sky-600">
             Get Started
           </Button>
         </div>

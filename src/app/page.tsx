@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils'
 import { Mitr } from 'next/font/google'
 
 const montseMitr = Mitr({
-  weight: '400',
-  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  subsets: ['thai'],
 })
 
 export default function Home() {
@@ -16,11 +16,11 @@ export default function Home() {
           <span
             className={cn(
               montseMitr.className,
-              'text-6xl font-bold text-balance md:max-w-4xl text-center leading-tight tracking-tight'
+              'text-6xl font-semibold text-balance md:max-w-4xl text-center leading-tight tracking-tight'
             )}
           >
-            The Best <span className="text-sky-900">Social</span> Platform For{' '}
-            <span className="text-sky-900">Bakers</span> All Around The World
+            The Best <span className="text-sky-400">Social</span> Platform For{' '}
+            <span className="text-sky-400">Bakers</span> All Around The World
           </span>
         </div>
       </main>
