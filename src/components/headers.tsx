@@ -4,6 +4,8 @@ import { Button } from './ui/button'
 import { Pacifico } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
+import { SignInButton, SignedIn } from '@clerk/nextjs'
+import { SignOutButton, SignedOut } from '@clerk/clerk-react'
 
 const pacifico = Pacifico({
   weight: '400',
@@ -37,7 +39,14 @@ export function Header() {
           Bkerss
         </span>
         <div className="flex items-center gap-4">
-          <span className="cursor-pointer font-medium">Login</span>
+          <span className="cursor-pointer font-medium">
+            <SignedIn>
+              <SignOutButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+          </span>
           <Button className="rounded-3xl bg-sky-500 hover:bg-sky-600">
             Get Started
           </Button>
