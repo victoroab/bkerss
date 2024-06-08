@@ -4,12 +4,20 @@ import { Button } from './ui/button'
 import { Pacifico } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
-import { SignInButton, SignedIn } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignIn } from '@clerk/nextjs'
 import { SignOutButton, SignedOut } from '@clerk/clerk-react'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from './ui/dialog'
 
 const pacifico = Pacifico({
   weight: '400',
-  subsets: ['latin'],
+  subsets: ['cyrillic-ext'],
 })
 
 const LOWER = 20
@@ -44,7 +52,20 @@ export function Header() {
               <SignOutButton />
             </SignedIn>
             <SignedOut>
-              <SignInButton />
+              <Dialog>
+                <DialogTrigger>Login</DialogTrigger>
+                <DialogContent className="w-fit p-0 pt-9 bg-white">
+                  <SignIn
+                    appearance={{
+                      elements: {
+                        cardBox: 'border-none shadow-none',
+                        formButtonPrimary: 'bg-sky-500 hover:bg-sky-600',
+                        buttonArrowIcon: 'hidden',
+                      },
+                    }}
+                  />
+                </DialogContent>
+              </Dialog>
             </SignedOut>
           </span>
           <Button className="rounded-3xl bg-sky-500 hover:bg-sky-600">
@@ -75,7 +96,7 @@ export function AppHeader() {
     >
       <nav className="container flex items-center justify-between py-3">
         <span
-          className={cn(pacifico.className, 'text-2xl font-bold text-sky-900')}
+          className={cn(pacifico.className, 'text-3xl font-bold text-sky-900')}
         >
           Bkerss
         </span>
