@@ -4,10 +4,12 @@ import { Button } from './ui/button'
 import { Pacifico } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
-import { SignedIn, SignIn } from '@clerk/nextjs'
+import { SignedIn, SignIn, UserButton } from '@clerk/nextjs'
 import { SignOutButton, SignedOut } from '@clerk/clerk-react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
+import { DoorClosed, Newspaper, Users } from 'lucide-react'
 import Link from 'next/link'
+import { ModeToggle } from './mode-toggle'
 
 const pacifico = Pacifico({
   weight: '400',
@@ -87,35 +89,39 @@ export function Header() {
 }
 
 export function AppHeader() {
-  const [isScroll, setIsScroll] = useState<0 | 1>(0)
-  window.addEventListener('scroll', () => {
-    if (window.scrollY < LOWER) {
-      setIsScroll(0)
-    }
-    if (window.scrollY > LOWER && window.scrollY < UPPER) {
-      setIsScroll(1)
-    }
-  })
-
   return (
-    <header
-      className={`w-full inset-x-0 transition-all duration-150 sticky top-0 z-20 flex items-center backdrop-blur-md ${
-        isScroll > 0 && 'border-b'
-      }`}
-    >
-      <nav className="container flex items-center justify-between py-3">
-        <span
-          className={cn(pacifico.className, 'text-3xl font-bold text-sky-900')}
-        >
-          Bkerss
-        </span>
-        <menu>
-          <ul className="flex items-center gap-3">
-            <li className="cursor-pointer hover:text-sky-600">Feed</li>
-            <li className="cursor-pointer hover:text-sky-600">Groups</li>
+    <header className="w-full inset-x-0 transition-all duration-150 sticky z-20 flex items-center backdrop-blur-md border-b">
+      <nav className="w-full flex items-center p-4">
+        <Link href={'/app'}>
+          <span
+            className={cn(
+              pacifico.className,
+              'text-3xl font-bold text-sky-900'
+            )}
+          >
+            Bkerss
+          </span>
+        </Link>
+        <menu className="ml-36">
+          <ul className="flex items-center gap-9">
+            <li className="cursor-pointer hover:text-sky-600 font-light flex items-center gap-2">
+              <DoorClosed />
+              Home
+            </li>
+            <li className="cursor-pointer hover:text-sky-600 font-light flex items-center gap-2">
+              <Newspaper />
+              Feed
+            </li>
+            <li className="cursor-pointer hover:text-sky-600 font-light flex items-center gap-2">
+              <Users />
+              Groups
+            </li>
           </ul>
         </menu>
-        <div className="flex items-center gap-4"></div>
+        <div className="flex items-center gap-2 ml-auto">
+          <ModeToggle />
+          <UserButton />
+        </div>
       </nav>
     </header>
   )
