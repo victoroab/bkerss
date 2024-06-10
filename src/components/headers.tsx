@@ -7,9 +7,10 @@ import { useEffect, useState } from 'react'
 import { SignedIn, SignIn, UserButton } from '@clerk/nextjs'
 import { SignOutButton, SignedOut } from '@clerk/clerk-react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
-import { DoorClosed, Newspaper, Users } from 'lucide-react'
+import { DoorClosed, LucideProps, Newspaper, Users } from 'lucide-react'
 import Link from 'next/link'
 import { ModeToggle } from './mode-toggle'
+import { usePathname } from 'next/navigation'
 
 const pacifico = Pacifico({
   weight: '400',
@@ -88,7 +89,28 @@ export function Header() {
   )
 }
 
+// type AppLink = {
+//   path: string
+// }
+
+const appLinks = [
+  {
+    path: '/app',
+    icon: <DoorClosed />,
+  },
+  {
+    path: '/feed',
+    icon: <Newspaper />,
+  },
+  {
+    path: '/groups',
+    icon: <Users />,
+  },
+]
+
 export function AppHeader() {
+  const pathname = usePathname()
+  console.log(pathname)
   return (
     <header className="w-full inset-x-0 transition-all duration-150 sticky z-20 flex items-center backdrop-blur-md border-b">
       <nav className="w-full flex items-center p-4">
@@ -104,15 +126,32 @@ export function AppHeader() {
         </Link>
         <menu className="ml-36">
           <ul className="flex items-center gap-9">
-            <li className="cursor-pointer hover:text-sky-600 font-light flex items-center gap-2">
-              <DoorClosed />
-              Home
-            </li>
-            <li className="cursor-pointer hover:text-sky-600 font-light flex items-center gap-2">
+            <Link href={'/app'}>
+              <li
+                className={cn(
+                  'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
+                  `${pathname === '/app' && 'text-sky-500'}`
+                )}
+              >
+                <DoorClosed />
+                Home
+              </li>
+            </Link>
+            <li
+              className={cn(
+                'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
+                `${pathname === '/feed' && 'text-sky-500'}`
+              )}
+            >
               <Newspaper />
               Feed
             </li>
-            <li className="cursor-pointer hover:text-sky-600 font-light flex items-center gap-2">
+            <li
+              className={cn(
+                'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
+                `${pathname === '/groups' && 'text-sky-500'}`
+              )}
+            >
               <Users />
               Groups
             </li>
