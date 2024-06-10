@@ -110,10 +110,9 @@ const appLinks = [
 
 export function AppHeader() {
   const pathname = usePathname()
-  console.log(pathname)
   return (
     <header className="w-full inset-x-0 transition-all duration-150 sticky z-20 flex items-center backdrop-blur-md border-b">
-      <nav className="w-full flex items-center p-4">
+      <nav className="w-full flex items-center py-2 px-4">
         <Link href={'/app'}>
           <span
             className={cn(
