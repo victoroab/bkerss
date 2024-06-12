@@ -4,13 +4,20 @@ import { Button } from './ui/button'
 import { Pacifico } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
-import { SignedIn, SignIn, UserButton } from '@clerk/nextjs'
+import {
+  SignedIn,
+  SignIn,
+  UserButton,
+  ClerkLoading,
+  ClerkLoaded,
+} from '@clerk/nextjs'
 import { SignOutButton, SignedOut } from '@clerk/clerk-react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
-import { DoorClosed, LucideProps, Newspaper, Users } from 'lucide-react'
+import { DoorClosed, Newspaper, Users } from 'lucide-react'
 import Link from 'next/link'
 import { ModeToggle } from './mode-toggle'
 import { usePathname } from 'next/navigation'
+import { Loader } from '@/components/loader'
 
 const pacifico = Pacifico({
   weight: '400',
@@ -98,25 +105,6 @@ export function Header() {
   )
 }
 
-// type AppLink = {
-//   path: string
-// }
-
-const appLinks = [
-  {
-    path: '/app',
-    icon: <DoorClosed />,
-  },
-  {
-    path: '/feed',
-    icon: <Newspaper />,
-  },
-  {
-    path: '/groups',
-    icon: <Users />,
-  },
-]
-
 export function AppHeader() {
   const pathname = usePathname()
   return (
@@ -137,8 +125,8 @@ export function AppHeader() {
             <Link href={'/app'}>
               <li
                 className={cn(
-                  'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                  `${pathname === '/app' && 'text-sky-500 dark:text-sky-400'}`
+                  'cursor-pointer hover:text-sky-600 font-normal flex items-center gap-2',
+                  `${pathname === '/app' && 'text-sky-700 dark:text-sky-400'}`
                 )}
               >
                 <DoorClosed />
@@ -148,11 +136,13 @@ export function AppHeader() {
             <li
               className={cn(
                 'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                `${pathname === '/feed' && 'text-sky-500 dark:text-sky-400'}`
+                `${
+                  pathname === '/activity' && 'text-sky-500 dark:text-sky-400'
+                }`
               )}
             >
               <Newspaper />
-              Feed
+              Activity
             </li>
             <li
               className={cn(
@@ -167,7 +157,12 @@ export function AppHeader() {
         </menu>
         <div className="flex items-center gap-2 ml-auto">
           <ModeToggle />
-          <UserButton />
+          <ClerkLoading>
+            <Loader />
+          </ClerkLoading>
+          <ClerkLoaded>
+            <UserButton />
+          </ClerkLoaded>
         </div>
       </nav>
     </header>
