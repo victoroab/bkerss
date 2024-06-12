@@ -57,6 +57,15 @@ export function Header() {
         <div className="flex items-center gap-4">
           <span className="cursor-pointer font-medium">
             <SignedIn>
+              <Button
+                className="mx-4 bg-sky-500 hover:bg-sky-600 rounded-2xl"
+                size={'sm'}
+                asChild
+              >
+                <Link href={'/app'}>Feed</Link>
+              </Button>
+            </SignedIn>
+            <SignedIn>
               <SignOutButton />
             </SignedIn>
             <SignedOut>
@@ -117,7 +126,7 @@ export function AppHeader() {
           <span
             className={cn(
               pacifico.className,
-              'text-3xl font-bold text-sky-900'
+              'text-3xl font-bold text-sky-900 dark:text-sky-600'
             )}
           >
             Bkerss
@@ -129,7 +138,7 @@ export function AppHeader() {
               <li
                 className={cn(
                   'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                  `${pathname === '/app' && 'text-sky-500'}`
+                  `${pathname === '/app' && 'text-sky-500 dark:text-sky-400'}`
                 )}
               >
                 <DoorClosed />
@@ -139,7 +148,7 @@ export function AppHeader() {
             <li
               className={cn(
                 'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                `${pathname === '/feed' && 'text-sky-500'}`
+                `${pathname === '/feed' && 'text-sky-500 dark:text-sky-400'}`
               )}
             >
               <Newspaper />
@@ -148,7 +157,7 @@ export function AppHeader() {
             <li
               className={cn(
                 'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                `${pathname === '/groups' && 'text-sky-500'}`
+                `${pathname === '/groups' && 'text-sky-500 dark:text-sky-400'}`
               )}
             >
               <Users />
