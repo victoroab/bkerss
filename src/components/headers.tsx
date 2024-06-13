@@ -18,8 +18,6 @@ import Link from 'next/link'
 import { ModeToggle } from './mode-toggle'
 import { usePathname } from 'next/navigation'
 import { Loader } from '@/components/loader'
-import { Span } from 'next/dist/trace'
-import { BreadcrumbSeparator } from './ui/breadcrumb'
 
 const pacifico = Pacifico({
   weight: '400',
@@ -111,7 +109,7 @@ export function AppHeader() {
   const pathname = usePathname()
   const paths = ['/app', '/activity', '/groups']
   return (
-    <header className="w-full inset-x-0 transition-all duration-150 sticky z-20 flex items-center backdrop-blur-md border-b">
+    <header className="w-full inset-x-0 transition-all duration-150 fixed z-20 flex items-center backdrop-blur-md border-b">
       <nav className="w-full flex items-center py-2 px-4">
         <Link href={'/app'}>
           <span
