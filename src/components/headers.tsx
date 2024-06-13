@@ -13,11 +13,13 @@ import {
 } from '@clerk/nextjs'
 import { SignOutButton, SignedOut } from '@clerk/clerk-react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
-import { DoorClosed, Newspaper, Users } from 'lucide-react'
+import { LayoutDashboard, Newspaper, Users } from 'lucide-react'
 import Link from 'next/link'
 import { ModeToggle } from './mode-toggle'
 import { usePathname } from 'next/navigation'
 import { Loader } from '@/components/loader'
+import { Span } from 'next/dist/trace'
+import { BreadcrumbSeparator } from './ui/breadcrumb'
 
 const pacifico = Pacifico({
   weight: '400',
@@ -55,7 +57,7 @@ export function Header() {
           <span
             className={cn(
               pacifico.className,
-              'text-3xl font-bold text-sky-900'
+              'text-3xl font-bold text-sky-900 drop-shadow-2xl shadow-inner'
             )}
           >
             Bkerss
@@ -107,6 +109,7 @@ export function Header() {
 
 export function AppHeader() {
   const pathname = usePathname()
+  const paths = ['/app', '/activity', '/groups']
   return (
     <header className="w-full inset-x-0 transition-all duration-150 sticky z-20 flex items-center backdrop-blur-md border-b">
       <nav className="w-full flex items-center py-2 px-4">
@@ -121,39 +124,42 @@ export function AppHeader() {
           </span>
         </Link>
         <menu className="ml-36">
-          <ul className="flex items-center gap-9">
-            <Link href={'/app'}>
+          {pathname === '/app' && (
+            <ul className="flex items-center gap-9">
+              <Link href={'/app'}>
+                <li
+                  className={cn(
+                    'cursor-pointer hover:text-sky-600 font-normal flex items-center gap-2',
+                    `${
+                      paths[0] === pathname &&
+                      'text-sky-700/90 dark:text-sky-500'
+                    }`
+                  )}
+                >
+                  <LayoutDashboard />
+                  Home
+                </li>
+              </Link>
               <li
                 className={cn(
-                  'cursor-pointer hover:text-sky-600 font-normal flex items-center gap-2',
-                  `${pathname === '/app' && 'text-sky-700 dark:text-sky-400'}`
+                  'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
+                  `${paths[1] === pathname && 'text-sky-500 dark:text-sky-400'}`
                 )}
               >
-                <DoorClosed />
-                Home
+                <Newspaper />
+                Activity
               </li>
-            </Link>
-            <li
-              className={cn(
-                'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                `${
-                  pathname === '/activity' && 'text-sky-500 dark:text-sky-400'
-                }`
-              )}
-            >
-              <Newspaper />
-              Activity
-            </li>
-            <li
-              className={cn(
-                'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
-                `${pathname === '/groups' && 'text-sky-500 dark:text-sky-400'}`
-              )}
-            >
-              <Users />
-              Groups
-            </li>
-          </ul>
+              <li
+                className={cn(
+                  'cursor-pointer hover:text-sky-600 font-light flex items-center gap-2',
+                  `${paths[2] === pathname && 'text-sky-500 dark:text-sky-400'}`
+                )}
+              >
+                <Users />
+                Groups
+              </li>
+            </ul>
+          )}
         </menu>
         <div className="flex items-center gap-2 ml-auto">
           <ModeToggle />

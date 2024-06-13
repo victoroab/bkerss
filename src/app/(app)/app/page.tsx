@@ -26,7 +26,7 @@ export default function Page() {
                 <CardDescription>5 steps pending</CardDescription>
               </CardHeader>
               <CardFooter className="text-sm">
-                <div className="w-full h-1 bg-sky-600"></div>
+                <div className="w-full h-1 bg-sky-800 dark:bg-sky-500"></div>
               </CardFooter>
             </Card>
           </Link>
