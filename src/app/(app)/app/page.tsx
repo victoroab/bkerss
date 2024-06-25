@@ -1,5 +1,6 @@
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -25,8 +26,10 @@ export default function Page() {
                 </CardTitle>
                 <CardDescription>5 steps pending</CardDescription>
               </CardHeader>
+              <CardContent></CardContent>
               <CardFooter className="text-sm">
-                <div className="w-full h-1 bg-sky-800 dark:bg-sky-500"></div>
+                View details about your profile
+                {/* <div className="w-full h-1 bg-sky-800 dark:bg-sky-500"></div> */}
               </CardFooter>
             </Card>
           </Link>

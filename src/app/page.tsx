@@ -21,6 +21,7 @@ export default function Home() {
           >
             The Best <span className="text-sky-400">Social</span> Platform For{' '}
             <span className="text-sky-400">Bakers</span> All Around The World
+            <span className="text-sky-400">!!!</span>
           </span>
         </div>
       </main>

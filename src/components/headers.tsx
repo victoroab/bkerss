@@ -55,7 +55,7 @@ export function Header() {
           <span
             className={cn(
               pacifico.className,
-              'text-3xl font-bold text-sky-900 drop-shadow-2xl shadow-inner'
+              'text-3xl font-bold text-sky-900 dark:text-sky-500 drop-shadow-2xl shadow-inner'
             )}
           >
             Bkerss
@@ -65,7 +65,7 @@ export function Header() {
           <span className="cursor-pointer font-medium">
             <SignedIn>
               <Button
-                className="mx-4 bg-sky-500 hover:bg-sky-600 rounded-2xl"
+                className="mx-4 bg-gradient-to-br from-sky-400 to-sky-600 dark:text-white hover:rotate-[2deg] rounded-2xl"
                 size={'sm'}
                 asChild
               >
@@ -95,7 +95,10 @@ export function Header() {
             </SignedOut>
           </span>
           <SignedOut>
-            <Button className="rounded-3xl bg-sky-500 hover:bg-sky-600" asChild>
+            <Button
+              className="rounded-3xl bg-gradient-to-br from-sky-500 to-sky-600 hover:bg-sky-600 dark:text-white hover:rotate-[2deg] duration-700"
+              asChild
+            >
               <Link href={'/sign-up'}>Get Started</Link>
             </Button>
           </SignedOut>
@@ -115,7 +118,7 @@ export function AppHeader() {
           <span
             className={cn(
               pacifico.className,
-              'text-3xl font-bold text-sky-900 dark:text-sky-600'
+              'text-3xl font-bold text-sky-900 dark:text-sky-500'
             )}
           >
             Bkerss
