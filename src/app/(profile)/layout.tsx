@@ -1,6 +1,6 @@
 import { AppHeader } from '@/components/headers'
 import { Button } from '@/components/ui/button'
-import { LayoutDashboard, Newspaper, User } from 'lucide-react'
+import { LayoutDashboard, Newspaper, Users } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ProfileLayout({
@@ -36,7 +36,7 @@ export default function ProfileLayout({
                 className="flex justify-start gap-3 py-0 pl-2 w-full rounded-lg dark:text-white dark:hover:bg-neutral-800 dark:hover:border-none hover:text-sky-700 hover:border hover:border-sky-200 hover:bg-sky-50 text-gray-900 bg-transparent"
                 size={'sm'}
               >
-                <User /> Groups
+                <Users /> Groups
               </Button>
             </div>
           </nav>
