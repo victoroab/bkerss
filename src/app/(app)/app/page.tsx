@@ -29,7 +29,6 @@ export default function Page() {
               <CardContent></CardContent>
               <CardFooter className="text-sm">
                 View details about your profile
-                {/* <div className="w-full h-1 bg-sky-800 dark:bg-sky-500"></div> */}
               </CardFooter>
             </Card>
           </Link>
