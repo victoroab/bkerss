@@ -24,7 +24,7 @@ export default function Page() {
                     <UserImage />
                   </div>
                 </CardTitle>
-                <CardDescription>5 steps pending</CardDescription>
+                {/* <CardDescription>5 steps pending</CardDescription> */}
               </CardHeader>
               <CardContent></CardContent>
               <CardFooter className="text-sm">

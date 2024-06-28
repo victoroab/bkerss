@@ -110,7 +110,7 @@ export function Header() {
 
 export function AppHeader() {
   const pathname = usePathname()
-  const paths = ['/app', '/activity', '/groups']
+  const paths = ['/app', '/feed', '/groups']
   return (
     <header className="w-full inset-x-0 transition-all duration-150 fixed z-20 flex items-center backdrop-blur-md border-b">
       <nav className="w-full flex items-center py-2 px-4">
@@ -148,7 +148,7 @@ export function AppHeader() {
                 )}
               >
                 <Newspaper />
-                Activity
+                Feed
               </li>
               <li
                 className={cn(
