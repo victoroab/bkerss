@@ -1,5 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { NotebookPenIcon, Settings, ShoppingBag } from 'lucide-react'
+import { PersonalInformation } from './personal-information'
+import { SettingsTab } from './settings'
+import { Products } from './products'
 
 export default function ProfilePage() {
   return (
@@ -20,24 +23,9 @@ export default function ProfilePage() {
             <Settings /> Settings
           </TabsTrigger>
         </TabsList>
-        <TabsContent
-          value="bio"
-          className="mt-4 py-3 border rounded-md bg-neutral-50 dark:bg-neutral-950 h-full"
-        >
-          <div className="w-full flex flex-1 items-center h-full"></div>
-        </TabsContent>
-        <TabsContent
-          value="settings"
-          className="mt-4 py-3 border rounded-md bg-neutral-50 dark:bg-neutral-950 h-full"
-        >
-          <div className="w-full flex flex-1 items-center h-full"></div>
-        </TabsContent>
-        <TabsContent
-          value="products"
-          className="mt-4 py-3 border rounded-md bg-neutral-50 dark:bg-neutral-950 h-full"
-        >
-          <div className="w-full flex flex-1 items-center h-full"></div>
-        </TabsContent>
+        <PersonalInformation />
+        <Products />
+        <SettingsTab />
       </Tabs>
     </div>
   )
