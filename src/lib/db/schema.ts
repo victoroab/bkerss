@@ -22,6 +22,8 @@ export const users = pgTable(
     phone: text('phone'),
     displayName: text('displayName'),
     address: text('address'),
+    bio: text('bio'),
+    location: text('location'),
   },
   (users) => {
     return {

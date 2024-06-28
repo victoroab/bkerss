@@ -9,7 +9,7 @@ export default function ProfilePage() {
       <Tabs defaultValue="bio">
         <TabsList className="">
           <TabsTrigger value="bio" className="flex items-center gap-2">
-            <NotebookPenIcon /> Bio
+            <NotebookPenIcon /> Personal Information
           </TabsTrigger>
 
           <TabsTrigger value="products" className="flex items-center gap-2">
